@@ -1,0 +1,451 @@
+<template>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card shadow-sm rounded-lg border-0">
+                    <div class="card-header bg-white border-0 d-flex align-items-center justify-content-between" style="min-height: 70px;">
+                        <h4 class="card-title mb-0 fw-bold text-dark" style="font-size: 1.7rem; letter-spacing: 0.5px;">Sales <span class="mx-2">|</span> <span class="badge bg-primary text-white ms-2" style="font-size: 1rem;">{{ total }}</span></h4>
+                        <div class="card-tools d-flex gap-2">
+                            <button @click="csvExport(csvData)" class="btn btn-light border text-dark fw-semibold shadow-sm px-4 py-2 rounded-pill">Export as CSV</button>
+                            <button type="button" class="btn btn-outline-primary fw-semibold shadow-sm px-4 py-2 rounded-pill" @click.prevent="create">
+                                <i class="fas fa-plus me-2"></i> Sale
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <strong>Search by :</strong>
+                                </div>
+                                <div class="col-md-3">
+                                    <select v-model="queryField" class="form-control rounded-pill px-3" id="fields">
+                                        <option value="product">Product Name</option>
+                                        <option value="customer">Customer Name</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <input v-model="query" type="text" class="form-control rounded-pill px-3" placeholder="Search...">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-light border shadow-sm rounded-pill w-100" @click.prevent="reload">
+                                        <i class="fas fa-sync me-2"></i> Reset Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- table  -->
+                        <div class="table-responsive rounded-4 shadow-sm">
+                            <table class="table table-hover table-borderless align-middle mb-0 overflow-hidden" style="border-radius: 1.2rem; background: #fafbfc;">
+                                <thead class="table-light" style="border-radius: 1.2rem 1.2rem 0 0;">
+                                    <tr style="font-size: 1rem; border-radius: 1.2rem 1.2rem 0 0; overflow: hidden;">
+                                        <th scope="col" class="fw-medium text-dark py-3 border-0 border-bottom text-start" style="letter-spacing:0.02em; border-top-left-radius: 1.2rem; border-bottom: 1.5px solid #e5e7eb; background: #f8f9fa;">Sale Id</th>
+                                        <th scope="col" class="fw-medium text-dark py-3 border-0 border-bottom text-start" style="letter-spacing:0.02em; background: #f8f9fa;">Product Name</th>
+                                        <th scope="col" class="fw-medium text-dark py-3 border-0 border-bottom text-start" style="letter-spacing:0.02em; background: #f8f9fa;">Customer Name</th>
+                                        <th scope="col" class="fw-medium text-dark py-3 border-0 border-bottom text-start" style="letter-spacing:0.02em; background: #f8f9fa;">Quantity</th>
+                                        <th scope="col" class="fw-medium text-dark py-3 border-0 border-bottom text-start" style="letter-spacing:0.02em; background: #f8f9fa;">Total</th>
+                                        <th scope="col" class="fw-medium text-dark py-3 border-0 border-bottom text-start" style="letter-spacing:0.02em; border-top-right-radius: 1.2rem; border-bottom: 1.5px solid #e5e7eb; background: #f8f9fa;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="sale in sales" :key="sale.id" class="bg-white border-bottom border-light" style="vertical-align: middle; transition: background 0.2s;">
+                                        <th scope="row" class="text-muted text-start">{{ sale.id }}</th>
+                                        <td class="text-start"><a @click.prevent="showProductDetails(sale.product_id)" class="text-primary fw-semibold" style="cursor:pointer">{{ sale.name }}</a></td>
+                                        <td class="text-start"><a @click.prevent="showCustomerDetails(sale.customer_id)" class="text-primary fw-semibold" style="cursor:pointer">{{ sale.c_name}}</a></td>
+                                        <td class="text-start">{{ sale.quantity }}</td>
+                                        <td class="text-start">{{ sale.t_price | currency}}</td>
+                                        <td class="text-start">
+                                            <button type="button" @click.prevent="show(sale)" class="btn btn-light border-0 btn-sm rounded-circle me-1 shadow-none" title="View">
+                                                <i class="fas fa-eye text-primary"></i>
+                                            </button>
+                                            <button type="button" @click.prevent="destroy(sale)" class="btn btn-light border-0 btn-sm rounded-circle shadow-none" title="Delete">
+                                                <i class="fas fa-trash-alt text-danger"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr v-if="!sales || !sales.length">
+                                        <td colspan="6">
+                                            <div class="alert alert-danger text-center m-0 py-3 rounded-3" role="alert">Sorry :( No data found.</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pt-3">
+                                <pagination-component v-if="pagination.last_page > 1"
+                                    :pagination="pagination"
+                                    :offset="5"
+                                    @paginate="getSales"></pagination-component>
+                            </div>
+                        </div>
+                        <!-- end table -->
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="ModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 v-if="showMode == true" class="modal-title text-info" id="exampleModalLongTitle">Details for <strong>{{ showDetails.name }}</strong> </h5>
+                            <h5 v-else class="modal-title text-primary" id="exampleModalLongTitle">Sales</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form v-if="showMode == false" @submit.prevent="store()" @keydown="form.onKeydown($event)">
+                        <div class="modal-body">
+                          <alert-error :form="form" message="There were some problems with your input."></alert-error>
+                                <div class="form-group">
+                                <label>Select Product </label>
+                                    <select v-model="form.purchases_id" name="purchases_id" required 
+                                        class="form-control" :class="{ 'is-invalid': form.errors.has('purchases_id') }" placeholder="Select Category">
+                                        <option v-for="purchase in purchases" :key="purchase.id" v-bind:value="purchase.id">{{ purchase.product.name }}</option>
+                                    </select>
+                                <has-error :form="form" field="purchases_id"></has-error>
+                                </div>
+                                <div class="form-group">
+                                <label>Select Customer </label>
+                                    <select v-model="form.customer_id" name="customer_id" required 
+                                        class="form-control" :class="{ 'is-invalid': form.errors.has('customer_id') }" placeholder="Select Category">
+                                        <option v-for="customer in customers" :key="customer.id" v-bind:value="customer.id">{{ customer.c_name }}</option>
+                                    </select>
+                                <has-error :form="form" field="customer_id"></has-error>
+                                </div>
+                                <div class="form-group">
+                                <label>Quantity</label>
+                                <input v-model="form.quantity" type="number" name="quantity" placeholder="Enter Quantity"
+                                    class="form-control" :class="{ 'is-invalid': form.errors.has('quantity') }">
+                                <has-error :form="form" field="quantity"></has-error>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button :disabled="form.busy" type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                         </form>
+                          <div v-if="showMode ==  true" class="modal-body">
+                              <div class="card border-info mb-3">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><strong>Product Name : </strong> {{ showDetails.name }}</li>
+                                        <li class="list-group-item"><strong>Product Code : </strong> {{ showDetails.code }}</li>
+                                        <li class="list-group-item"><strong>Retail Price : </strong> {{ showDetails.retail_price | currency}}</li>
+                                        <li class="list-group-item"><strong>Sale Price: </strong> {{ showDetails.sale_price | currency}}</li>
+                                        <li class="list-group-item"><strong>Quantity : </strong> {{ showDetails.quantity }}</li>
+                                        <li class="list-group-item"><strong>Total Amount : </strong> {{ showDetails.t_price | currency}}  ({{ showDetails.sale_price }} X {{ showDetails.quantity }})</li>
+                                        <hr>
+                                        <li class="list-group-item"><strong>Customer Name : </strong> {{ showDetails.c_name }}</li>
+                                        <li class="list-group-item"><strong>Customer Email : </strong> {{ showDetails.email }}</li>
+                                        <li class="list-group-item"><strong>Customer Phone : </strong> {{ showDetails.phone }}</li>
+                                        <li class="list-group-item"><strong>Created At : </strong> {{ showDetails.created_at | mydate }}</li>
+                                    </ul>
+                                </div>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end modal  -->
+                <!-- moadal 2  -->
+                <div class="modal fade" id="ModalLong2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-primary" id="exampleModalLongTitle">{{ showDetails.name}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <div v-if="showProMode ==  true" class="modal-body">
+                              <div class="card border-info mb-3">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><strong>Product Name : </strong> {{ showDetails.name }}</li>
+                                        <li class="list-group-item"> <strong>Category Name : </strong> {{ showDetails.cat_name }}</li>
+                                        <li class="list-group-item"><strong>Product Code : </strong> {{ showDetails.code }}</li>
+                                        <li class="list-group-item"><strong>Created At : </strong> {{ showDetails.created_at | mydate }}</li>
+                                    </ul>
+                                </div>
+                                </div>
+                          </div>
+                          <div v-if="showCustomerMode ==  true" class="modal-body">
+                              <div class="card border-info mb-3">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><strong>Customer Name : </strong> {{ showDetails.c_name }}</li>
+                                        <li class="list-group-item"><strong>Customer Company : </strong> {{ showDetails.company_name }}</li>
+                                        <li class="list-group-item"><strong>Phone : </strong> {{ showDetails.phone }}</li>
+                                        <li class="list-group-item"><strong>E-mail : </strong> {{ showDetails.email }}</li>
+                                        <li class="list-group-item"><strong>Created At : </strong> {{ showDetails.created_at | mydate }}</li>
+                                    </ul>
+                                </div>
+                                </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- moadal 2 end -->
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data(){
+            return{
+                sales : [],
+                editMode : false,
+                showMode : false,
+                purchases : [],
+                customers : [],
+                form : new Form({
+                    id : '',
+                    purchases_id : '',
+                    customer_id : '',
+                    quantity : ''
+                    
+                }),
+                total : null,
+                showDetails : [],
+                showProMode : false,
+                showCustomerMode : false,
+                data :{
+                    exportdata : []
+                },
+                message : '',
+                pagination:{
+                    
+                },
+                current_page : 1,
+                query: '',
+                queryField: 'product'
+
+            }
+        },computed: {
+            csvData() {
+            return this.exportdata.map(item => ({
+                ...item,
+            }));
+            }
+        },
+        mounted() {
+            console.log('Component mounted.')
+            this.getSales()
+            this.getProduct()
+            this.getCustomer()
+            this.getData()
+        },
+        methods : {
+            csvExport(arrData) {
+                    let csvContent = "data:text/csv;charset=utf-8,";
+                    csvContent += [
+                        Object.keys(arrData[0]).join(";"),
+                        ...arrData.map(item => Object.values(item).join(";"))
+                    ]
+                        .join("\n")
+                        .replace(/(^\[)|(\]$)/gm, "");
+
+                    const data = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", data);
+                    link.setAttribute("download", "sales.csv");
+                    link.click();
+                    
+                },
+            getSales(){
+                this.$Progress.start()
+                axios.get('/api/salesdata?page='+this.pagination.current_page)
+                    .then(res=>{
+                        this.exportdata = res.data.data
+                        this.sales = res.data.data
+                        this.pagination = res.data
+                        this.current_page = res.data.current_page
+                        this.$Progress.finish()
+                    })
+                    .catch(e=>{
+                        console.log(e)
+                        this.$Progress.fail()
+                    })
+            },
+            getData(){
+                axios.get('/api/sales')
+                .then(res=>{
+                        //console.log(res.data)
+                        //this.sales = res.data.data
+                        //this.pagination = res.data.meta
+                        this.total = res.data.meta.total
+                    })
+                    .catch(e=>{
+                        console.log(e)
+                    })
+            },
+            create(){
+                this.showMode = false
+                this.form.reset()
+                this.form.clear()
+                $('#ModalLong').modal('show');
+            },
+            store(){
+                this.$Progress.start()
+                this.form.busy = true
+                this.form.post('/api/sales')
+                    .then(res=>{
+                        this.getSales()
+                       // console.log(res.data.message)
+                        this.message = res.message
+                        if(res.data.message){
+                            this.$Progress.fail()
+                            this.$snotify.error('Product Quantity is out Srock ','Error')
+                        }else{
+                            $('#ModalLong').modal('hide');
+                            if(this.form.successful){
+                                this.$Progress.finish();
+                                this.$snotify.success('Product Add Successfully','Success')
+                            }else{
+                                this.$Progress.fail()
+                                this.$snotify.error('Something wend wrong. Try aging','Error')
+                            }
+                        }
+                       
+                    })
+                    .catch(e=>{
+                        this.$Progress.fail()
+                        console.log(e)
+                    })
+            },
+            getProduct(){
+                 axios.get('/api/allpurchase')
+                    .then(res=>{
+                        //console.log(res.data.data)
+                        this.purchases = res.data.data
+                    })
+                    .catch(e=>{
+                        console.log(e)
+                    })
+            },
+            getCustomer(){
+                 axios.get('/api/allcustomer')
+                    .then(res=>{
+                        //console.log(res.data.data)
+                        this.customers = res.data.data
+                    })
+                    .catch(e=>{
+                        console.log(e)
+                    })
+            },
+            show(sale){
+                this.showMode = true
+                $('#ModalLong').modal('show');
+                //console.log(product)
+                this.showDetails = sale
+            },
+            destroy(sale){
+
+                this.$snotify.clear()
+                this.$snotify.confirm("You will not be able to recover this data!","Are you sure?", {
+                        showProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        buttons:[
+                            {
+                                text : "Yes",
+                                action : toast => {
+                                    this.$snotify.remove(toast.id)
+                                    //console.log(product)
+                                    this.$Progress.start()
+                                    axios.delete('/api/sales/'+sale.id)
+                                    .then(res=>{
+                                        this.getSales()
+                                            this.$Progress.finish();
+                                            this.$snotify.success('Sale Data Delete','Success')
+                                       
+                                    })
+                                    .catch(e=>{
+                                        this.$Progress.fail()
+                                        console.log(e)
+                                    })
+                                },
+                                bold : true
+                            },
+                            {
+                                text : "No",
+                                action : toast => {
+                                    this.$snotify.remove(toast.id)
+                                },
+                                bold : true
+                            }
+                            
+                        ]
+                    })
+            },
+            showProductDetails(product_id){
+                this.editMode = false
+                this.showMode = false
+                this.showCustomerMode = false
+                this.showProMode = true
+                $('#ModalLong2').modal('show');
+                axios.get('/api/product/'+product_id)
+                .then(res=>{
+                        this.showDetails = res.data.data
+                    })
+                    .catch(e=>{
+                        console.log(e)
+                    })
+            },
+            showCustomerDetails(customer_id){
+                this.editMode = false
+                this.showMode = false
+                this.showProMode = false
+                this.showCustomerMode = true
+                $('#ModalLong2').modal('show');
+                axios.get('/api/customer/'+customer_id)
+                .then(res=>{
+                        this.showDetails = res.data.data
+                    })
+                    .catch(e=>{
+                        console.log(e)
+                    })
+            },
+            reload() {
+                this.query = '';
+                this.queryField = 'product';
+                this.getSales();
+            },
+            searchData() {
+                if (!this.query) {
+                    this.getSales();
+                    return;
+                }
+                this.$Progress.start();
+                axios.get(`/api/search/sale/${this.queryField}/${this.query}`)
+                    .then(res => {
+                        this.sales = res.data.data;
+                        this.exportdata = res.data.data;
+                        this.pagination = res.data;
+                        this.current_page = 1;
+                        this.$Progress.finish();
+                    })
+                    .catch(e => {
+                        this.sales = [];
+                        this.exportdata = [];
+                        this.pagination = {};
+                        this.$Progress.fail();
+                    });
+            }
+        },
+        watch: {
+            query(val) {
+                this.searchData();
+            },
+            queryField(val) {
+                this.searchData();
+            }
+        }
+    }
+</script>

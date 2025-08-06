@@ -1,0 +1,707 @@
+/* filepath: /Users/abouminyar/Projects/Laravel/Shorol-stock-master-Trial-Version-/public/css/dark-mode.css */
+/* Apple-Inspired Dark Mode Palette */
+body.dark-mode {
+    background-color: #1C1C1E; /* Primary Background (Apple System Gray 6) */
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode a {
+    color: #0A84FF; /* Primary Accent */
+}
+body.dark-mode a:hover {
+    color: #3399FF; /* Accent Hover */
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .card {
+    background-color: #2C2C2E; /* Secondary Background */
+    border-color: #38383A; /* Border Color */
+}
+
+body.dark-mode .table {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .table th,
+body.dark-mode .table td {
+    border-color: #38383A; /* Border Color */
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.04); /* Slightly lighter than primary-bg for striping */
+}
+
+body.dark-mode .form-control {
+    background-color: #3A3A3C; /* Tertiary Background */
+    color: #FFFFFF; /* Primary Text */
+    border-color: #444446; /* Divider Color */
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #3A3A3C; /* Tertiary Background */
+    color: #FFFFFF; /* Primary Text */
+    border-color: #0A84FF; /* Primary Accent */
+    box-shadow: 0 0 0 0.2rem rgba(10, 132, 255, 0.25); /* Primary Accent with alpha */
+}
+
+body.dark-mode .btn-primary {
+    background-color: #0A84FF; /* Primary Accent */
+    border-color: #0A84FF; /* Primary Accent */
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #3399FF; /* Accent Hover */
+    border-color: #3399FF; /* Accent Hover */
+}
+
+body.dark-mode .btn-secondary {
+    background-color: #8E8E93; /* Apple Secondary Text (used as a neutral button bg) */
+    border-color: #8E8E93; /* Apple Secondary Text */
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: #9F9FA3; /* Lighter version of Apple Secondary Text */
+    border-color: #9F9FA3; /* Lighter version of Apple Secondary Text */
+}
+
+body.dark-mode .navbar {
+    background-color: #2C2C2E; /* Secondary Background */
+    border-bottom: 1px solid #38383A; /* Border Color */
+}
+
+body.dark-mode .navbar .navbar-brand,
+body.dark-mode .navbar .nav-link {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .navbar .nav-link:hover {
+    color: #0A84FF; /* Primary Accent */
+}
+
+/* Backend Layout Specific Styles */
+body.dark-mode .main-header.navbar {
+    background-color: #2C2C2E; /* Secondary Background */
+    border-bottom: 1px solid #38383A; /* Border Color */
+}
+
+body.dark-mode .main-header.navbar .nav-link {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .main-header.navbar .nav-link:hover {
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .main-header.navbar .navbar-nav .nav-link i {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+
+body.dark-mode .main-sidebar {
+    background-color: #2C2C2E; /* Secondary Background */
+}
+
+body.dark-mode .brand-link {
+    background-color: #2C2C2E; /* Secondary Background */
+    color: #8E8E93; /* Secondary Text */
+    border-bottom: 1px solid #38383A; /* Border Color */
+}
+
+body.dark-mode .brand-link .brand-text {
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .brand-link,
+body.dark-mode .brand-link .brand-text {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .brand-link svg g path {
+    fill: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .user-panel {
+    border-bottom: 1px solid #38383A; /* Border Color */
+}
+
+body.dark-mode .user-panel .info a {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .nav-sidebar .nav-link {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .nav-sidebar .nav-link:hover {
+    background-color: #3A3A3C; /* Tertiary Background */
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .nav-sidebar .nav-link p {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+body.dark-mode .nav-sidebar .nav-link:hover p {
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .nav-sidebar .nav-link i {
+    color: #C7C7CC; /* Tertiary Text (Apple) */
+}
+
+body.dark-mode .nav-sidebar .nav-link:hover i {
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .nav-header {
+    color: #C7C7CC; /* Tertiary Text (Apple) */
+    background-color: transparent;
+}
+
+body.dark-mode .content-wrapper {
+    background-color: #1C1C1E; /* Primary Background (Apple System Gray 6) */
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .content-header h1 {
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .breadcrumb .breadcrumb-item a {
+    color: #0A84FF; /* Primary Accent */
+}
+body.dark-mode .breadcrumb .breadcrumb-item.active {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+
+body.dark-mode .main-footer {
+    background-color: #2C2C2E; /* Secondary Background */
+    color: #C7C7CC; /* Tertiary Text (Apple) */
+    border-top: 1px solid #38383A; /* Border Color */
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #242425 !important; /* Black background */
+    border: 1px solid #38383A; /* Consistent border color */
+    color: #FFFFFF; /* Primary text color for contrast */
+}
+
+body.dark-mode .dropdown-item {
+    color: #FFFFFF !important; /* Primary text color for items */
+}
+
+body.dark-mode .dropdown-item:hover,
+body.dark-mode .dropdown-item:focus {
+    background-color: #444446; /* Darker Tertiary for hover */
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .dropdown-divider {
+    border-top: 1px solid #444446; /* Divider Color */
+}
+
+body.dark-mode .custom-control-label {
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #0A84FF; /* Primary Accent */
+    border-color: #0A84FF; /* Primary Accent */
+}
+
+/* Ensure specific icons in navbar dropdown also adapt */
+body.dark-mode .dropdown-menu .fa-arrow-right-from-bracket {
+    color: #C7C7CC !important; /* Tertiary Text (Apple), override inline styles */
+}
+body.dark-mode .dropdown-menu .text-danger {
+    color: #FF453A !important; /* Danger Color */
+}
+body.dark-mode .dropdown-menu .fw-bold {
+    color: #FFFFFF !important; /* Primary Text */
+}
+body.dark-mode .dropdown-menu .text-muted {
+    color: #C7C7CC !important; /* Tertiary Text (Apple) */
+}
+
+/* Specific style for the dark mode switch label within the dropdown */
+body.dark-mode .dropdown-menu .custom-control-label {
+    color: #FFFFFF; /* White text for readability on black background */
+}
+
+/* Login page specific styles if app.blade.php is used for it */
+body.dark-mode .bg-white { /* If login page uses bg-white directly on a container */
+    background-color: #2C2C2E !important; /* Secondary Background */
+}
+
+body.dark-mode .shadow-sm { /* Adjust shadows for dark mode */
+    box-shadow: 0 .125rem .25rem rgba(255, 255, 255, 0.05) !important; /* Lighter shadow */
+}
+
+/* Vue Component Specific Styles */
+
+/* Modals */
+body.dark-mode .modal-content {
+    background-color: #2C2C2E; /* Secondary Background */
+    color: #8E8E93; /* Secondary Text (Apple) */
+    border: 1px solid #38383A; /* Border Color */
+}
+
+body.dark-mode .modal-header {
+    border-bottom: 1px solid #444446; /* Divider Color */
+}
+
+body.dark-mode .modal-header .close,
+body.dark-mode .modal-header .btn-close {
+    color: #8E8E93; /* Secondary Text (Apple) */
+    text-shadow: none;
+}
+body.dark-mode .modal-header .close:hover,
+body.dark-mode .modal-header .btn-close:hover {
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .modal-title {
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .modal-footer {
+    border-top: 1px solid #444446; /* Divider Color */
+}
+
+/* Pagination */
+body.dark-mode .pagination .page-item .page-link {
+    background-color: #3A3A3C; /* Tertiary Background */
+    border-color: #444446; /* Divider Color */
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .pagination .page-item.active .page-link {
+    background-color: #0A84FF; /* Primary Accent */
+    border-color: #0A84FF; /* Primary Accent */
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .pagination .page-item.disabled .page-link {
+    background-color: #2C2C2E; /* Secondary Background */
+    border-color: #38383A; /* Border Color */
+    color: #C7C7CC; /* Tertiary Text (Apple) */
+}
+
+body.dark-mode .pagination .page-item .page-link:hover {
+    background-color: #444446; /* Darker Tertiary for hover */
+    border-color: #505052; /* Slightly darker border */
+}
+
+/* List Groups */
+body.dark-mode .list-group-item {
+    background-color: #2C2C2E; /* Secondary Background */
+    border-color: #38383A; /* Border Color */
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+body.dark-mode .list-group-item.active {
+    background-color: #0A84FF; /* Primary Accent */
+    border-color: #0A84FF; /* Primary Accent */
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode a.list-group-item:hover,
+body.dark-mode button.list-group-item:hover {
+    background-color: #3A3A3C; /* Tertiary Background */
+}
+
+/* Badges */
+body.dark-mode .badge {
+    color: #FFFFFF; /* Primary Text for most badges */
+}
+
+body.dark-mode .badge.bg-primary {
+    background-color: #0A84FF !important; /* Primary Accent */
+}
+body.dark-mode .badge.bg-secondary {
+    background-color: #8E8E93 !important; /* Apple Secondary Text (used as a neutral badge bg) */
+}
+body.dark-mode .badge.bg-success {
+    background-color: #32D74B !important; /* Success Color (Apple Green Accent) */
+    color: #1C1C1E !important; /* Dark text on light green (Apple Primary Background) */
+}
+body.dark-mode .badge.bg-danger {
+    background-color: #FF453A !important; /* Danger Color */
+}
+body.dark-mode .badge.bg-warning {
+    background-color: #FF9F0A !important; /* Warning Color */
+    color: #1C1C1E !important; /* Dark text on light orange (Apple Primary Background) */
+}
+body.dark-mode .badge.bg-info {
+    background-color: #64D2FF !important; /* Info Color */
+    color: #1C1C1E !important; /* Dark text on light cyan (Apple Primary Background) */
+}
+body.dark-mode .badge.bg-light {
+    background-color: #3A3A3C !important; /* Tertiary Background */
+    color: #8E8E93 !important; /* Secondary Text (Apple) */
+}
+body.dark-mode .badge.bg-dark {
+    background-color: #444446 !important; /* Divider Color (as a dark badge) */
+    color: #8E8E93 !important; /* Secondary Text (Apple) */
+}
+
+/* Alerts */
+body.dark-mode .alert {
+    border-width: 1px;
+}
+body.dark-mode .alert-primary {
+    background-color: rgba(10, 132, 255, 0.15); /* Primary Accent with alpha */
+    border-color: rgba(10, 132, 255, 0.3);
+    color: #3399FF; /* Accent Hover (lighter blue) */
+}
+body.dark-mode .alert-secondary {
+    background-color: rgba(142, 142, 147, 0.15); /* Apple Secondary Text with alpha */
+    border-color: rgba(142, 142, 147, 0.3);
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+body.dark-mode .alert-success {
+    background-color: rgba(50, 215, 75, 0.15); /* Success Color (Apple Green Accent) with alpha */
+    border-color: rgba(50, 215, 75, 0.3);
+    color: #32D74B; /* Success Color (Apple Green Accent) */
+}
+body.dark-mode .alert-danger {
+    background-color: rgba(255, 69, 58, 0.15); /* Danger Color with alpha */
+    border-color: rgba(255, 69, 58, 0.3);
+    color: #FF453A; /* Danger Color */
+}
+body.dark-mode .alert-warning {
+    background-color: rgba(255, 159, 10, 0.15); /* Warning Color with alpha */
+    border-color: rgba(255, 159, 10, 0.3);
+    color: #FF9F0A; /* Warning Color */
+}
+body.dark-mode .alert-info {
+    background-color: rgba(100, 210, 255, 0.15); /* Info Color with alpha */
+    border-color: rgba(100, 210, 255, 0.3);
+    color: #64D2FF; /* Info Color */
+}
+body.dark-mode .alert-light {
+    background-color: #3A3A3C; /* Tertiary Background */
+    border-color: #444446; /* Divider Color */
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+body.dark-mode .alert-dark {
+    background-color: #2C2C2E; /* Secondary Background */
+    border-color: #38383A; /* Border Color */
+    color: #8E8E93; /* Secondary Text (Apple) */
+}
+
+/* Progress Bars */
+body.dark-mode .progress {
+    background-color: #3A3A3C; /* Tertiary Background */
+}
+
+body.dark-mode .progress-bar {
+    background-color: #0A84FF; /* Primary Accent */
+    color: #FFFFFF; /* Primary Text */
+}
+
+/* DataTables specific adjustments */
+body.dark-mode .dataTables_wrapper .dataTables_length select,
+body.dark-mode .dataTables_wrapper .dataTables_filter input {
+    background-color: #3A3A3C; /* Tertiary Background */
+    color: #FFFFFF; /* Primary Text */
+    border: 1px solid #444446; /* Divider Color */
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_length label,
+body.dark-mode .dataTables_wrapper .dataTables_filter label,
+body.dark-mode .dataTables_wrapper .dataTables_info {
+    color: #C7C7CC; /* Tertiary Text (Apple) */
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #3A3A3C !important;
+    color: #8E8E93 !important; /* Secondary Text (Apple) */
+    border: 1px solid #444446 !important; /* Divider Color */
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background-color: #0A84FF !important; /* Primary Accent */
+    color: #FFFFFF !important; /* Primary Text */
+    border-color: #0A84FF !important; /* Primary Accent */
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #444446 !important; /* Darker Tertiary for hover */
+    color: #FFFFFF !important; /* Primary Text */
+    border-color: #505052 !important; /* Slightly darker border */
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+    background-color: #2C2C2E !important; /* Secondary Background */
+    color: #C7C7CC !important; /* Tertiary Text (Apple) */
+    border-color: #38383A !important; /* Border Color */
+}
+
+body.dark-mode table.dataTable thead th,
+body.dark-mode table.dataTable thead td {
+    color: #FFFFFF; /* Primary Text */
+    border-bottom: 1px solid #444446; /* Divider Color */
+}
+
+body.dark-mode table.dataTable tfoot th,
+body.dark-mode table.dataTable tfoot td {
+    color: #FFFFFF; /* Primary Text */
+    border-top: 1px solid #444446; /* Divider Color */
+}
+
+body.dark-mode table.dataTable.no-footer {
+    border-bottom-color: #38383A; /* Border Color */
+}
+
+/* SweetAlert2 specific adjustments if used in Vue */
+body.dark-mode .swal2-popup {
+    background-color: #2C2C2E; /* Secondary Background */
+    color: #E5E5E7; /* Secondary Text */
+}
+
+body.dark-mode .swal2-title {
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .swal2-html-container {
+    color: #E5E5E7; /* Secondary Text */
+}
+
+body.dark-mode .swal2-input,
+body.dark-mode .swal2-textarea {
+    background-color: #3A3A3C; /* Tertiary Background */
+    color: #FFFFFF; /* Primary Text */
+    border: 1px solid #444446; /* Divider Color */
+}
+
+body.dark-mode .swal2-actions .swal2-confirm {
+    background-color: #0A84FF !important; /* Primary Accent */
+    color: #FFFFFF !important; /* Primary Text */
+}
+
+body.dark-mode .swal2-actions .swal2-cancel {
+    background-color: #86868B !important; /* Muted/Placeholder Text */
+    color: #FFFFFF !important; /* Primary Text */
+}
+
+body.dark-mode .swal2-footer {
+    border-top: 1px solid #444446; /* Divider Color */
+    color: #86868B; /* Muted/Placeholder Text */
+}
+
+/* Specific Vue Component Adjustments from Profile.vue and ProductComponent.vue */
+
+/* Buttons */
+body.dark-mode .btn-light,
+body.dark-mode .btn-light.border {
+    background-color: #3A3A3C; /* Tertiary Background */
+    color: #FFFFFF; /* Primary Text */
+    border-color: #444446; /* Divider Color */
+}
+
+body.dark-mode .btn-light:hover,
+body.dark-mode .btn-light.border:hover {
+    background-color: #4a4a4e; /* Slightly lighter tertiary */
+    border-color: #505052; /* Slightly darker border */
+}
+
+body.dark-mode .btn-outline-primary {
+    color: #0A84FF; /* Primary Accent */
+    border-color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: #0A84FF; /* Primary Accent */
+    color: #FFFFFF; /* Primary Text */
+}
+
+/* Tables in Vue components */
+body.dark-mode .table-light,
+body.dark-mode thead.table-light th,
+body.dark-mode table thead.table-light th,
+body.dark-mode table.table th[style*="background: #f8f9fa"],
+body.dark-mode table.table[style*="background: #fafbfc"] {
+    background-color: #3A3A3C !important; /* Tertiary Background */
+    color: #FFFFFF; /* Primary Text */
+    border-color: #444446; /* Divider Color */
+}
+
+body.dark-mode .text-dark {
+    color: #FFFFFF !important; /* Primary Text */
+}
+
+body.dark-mode tr.bg-white,
+body.dark-mode tr[style*="background: #fff"],
+body.dark-mode tr[style*="background: white"] {
+    background-color: #2C2C2E !important; /* Secondary Background */
+    color: #E5E5E7; /* Secondary Text */
+}
+body.dark-mode tr.bg-white:hover {
+    background-color: #3A3A3C !important; /* Tertiary Background */
+}
+
+
+body.dark-mode .table th,
+body.dark-mode .table td {
+    border-color: #444446; /* Divider Color */
+}
+
+/* Contextual text colors for icons/text if needed */
+body.dark-mode .text-primary,
+body.dark-mode .fas.fa-eye.text-primary {
+    color: #0A84FF !important; /* Primary Accent */
+}
+
+body.dark-mode .text-success,
+body.dark-mode .fas.fa-edit.text-success {
+    color: #30D158 !important; /* Success Color */
+}
+
+body.dark-mode .text-danger,
+body.dark-mode .fas.fa-trash-alt.text-danger {
+    color: #FF453A !important; /* Danger Color */
+}
+
+body.dark-mode .text-info,
+body.dark-mode .modal-title.text-info {
+    color: #64D2FF !important; /* Info Color */
+}
+
+/* Cards with contextual borders */
+body.dark-mode .card.border-info {
+    border-color: #64D2FF !important; /* Info Color */
+}
+
+/* Form validation */
+body.dark-mode .invalid-feedback,
+body.dark-mode .has-error .help-block,
+body.dark-mode .alert-danger { /* This rule was broad, ensure it's what you want or make more specific */
+    color: #FF453A; /* Danger Color */
+}
+
+body.dark-mode .is-invalid {
+    border-color: #FF453A !important; /* Danger Color */
+}
+body.dark-mode .is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 69, 58, 0.25); /* Danger Color with alpha */
+}
+
+
+/* Elevation and custom shadows */
+body.dark-mode [class*="elevation-"] {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important; /* Darker shadows */
+}
+
+/* Specific overrides for ProductComponent table inline styles if they cannot be removed */
+body.dark-mode .table-responsive.rounded-4.shadow-sm table[style*="background: #fafbfc"] {
+    background: #2C2C2E !important; /* Secondary Background */
+}
+
+body.dark-mode .table-responsive.rounded-4.shadow-sm thead[style*="border-radius: 1.2rem 1.2rem 0 0;"] th[style*="background: #f8f9fa"] {
+    background: #3A3A3C !important; /* Tertiary Background */
+    color: #FFFFFF !important; /* Primary Text */
+}
+
+/* DashboardComponent.vue Specific Styles */
+body.dark-mode .dashboard-modern-bg {
+    background: linear-gradient(120deg, #1D1D1F 0%, #2C2C2E 40%, #3A3A3C 100%); /* Primary, Secondary, Tertiary BGs */
+}
+
+body.dark-mode .dashboard-hero {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Darker shadow */
+}
+
+body.dark-mode .dashboard-hero-img {
+    filter: brightness(0.6) blur(1px); /* Adjusted brightness */
+}
+
+body.dark-mode .dashboard-hero-overlay {
+    background: rgba(0,0,0,0.45); /* Slightly darker overlay */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .dashboard-title,
+body.dark-mode .dashboard-subtitle {
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .dashboard-card {
+    background: #2C2C2E; /* Secondary Background */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.07); /* Darker shadow */
+}
+
+body.dark-mode .dashboard-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.1); /* Darker hover shadow */
+    background: #3A3A3C; /* Tertiary Background on hover */
+}
+
+body.dark-mode .dashboard-card-icon,
+body.dark-mode .dashboard-card-icon.admin,
+body.dark-mode .dashboard-card-icon.customer,
+body.dark-mode .dashboard-card-icon.supplier,
+body.dark-mode .dashboard-card-icon.category,
+body.dark-mode .dashboard-card-icon.product,
+body.dark-mode .dashboard-card-icon.purchase,
+body.dark-mode .dashboard-card-icon.sales {
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .dashboard-card-content h3,
+body.dark-mode .dashboard-label,
+body.dark-mode .admin-label,
+body.dark-mode .customer-label,
+body.dark-mode .supplier-label,
+body.dark-mode .category-label,
+body.dark-mode .product-label,
+body.dark-mode .purchase-label,
+body.dark-mode .sales-label {
+    color: #FFFFFF; /* Primary Text */
+    background: #3A3A3C; /* Tertiary Background */
+}
+
+body.dark-mode .dashboard-card-content h3 {
+    background-color: #2C2C2E; /* Secondary Background */
+    color: #FFFFFF; /* Primary Text */
+}
+
+body.dark-mode .dashboard-card-content p {
+    background-color: #2C2C2E; /* Secondary Background */
+    color: #E5E5E7; /* Secondary Text */
+}
+
+body.dark-mode .dashboard-card-content p {
+    color: #E5E5E7; /* Secondary Text */
+    background: #3A3A3C; /* Tertiary Background */
+}
+
+body.dark-mode .dashboard-card-link {
+    color: #0A84FF; /* Primary Accent */
+}
+
+body.dark-mode .dashboard-card-link:hover {
+    color: #3399FF; /* Accent Hover */
+    text-decoration: underline;
+}
+
+body.dark-mode .sidebar {
+    background-color: #2C2C2E; /* Secondary Background */
+    color: #8E8E93; /* Secondary Text (Apple) */
+    border-right: 1px solid #38383A; /* Border Color */
+}
+
+
