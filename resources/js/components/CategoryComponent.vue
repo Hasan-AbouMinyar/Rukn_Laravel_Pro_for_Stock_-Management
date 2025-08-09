@@ -146,6 +146,7 @@
             }
         },
         mounted() {
+            
             console.log('Component mounted.')
             this.getData()
              axios.get("api/allcategory")
