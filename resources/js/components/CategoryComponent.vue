@@ -146,6 +146,8 @@
             }));
             }
         },
+        <!--this mounted-->
+        
         mounted() {
             
             console.log('Component mounted.')
